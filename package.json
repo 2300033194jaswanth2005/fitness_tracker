@@ -1,0 +1,11 @@
+{
+  "name": "fitness-track",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "cd server && start /B node server.js && cd ../client && npm start",
+    "start:server": "cd server && node server.js",
+    "start:client": "cd client && npm start",
+    "install:all": "cd server && npm install && cd ../client && npm install"
+  }
+}
