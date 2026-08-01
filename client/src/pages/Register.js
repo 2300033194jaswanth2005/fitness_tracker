@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import API from '../api';
 import './Auth.css';
 
 function Register() {
@@ -17,7 +17,7 @@ function Register() {
     if (form.password.length < 6) return setError('Password must be at least 6 characters');
     setLoading(true);
     try {
-      await axios.post('/api/auth/register', form);
+      await API.post('/api/auth/register', form);
       navigate('/login');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');

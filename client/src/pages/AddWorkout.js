@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import API from '../api';
 import { useAuth } from '../context/AuthContext';
 import './AddWorkout.css';
 
@@ -22,7 +22,7 @@ function AddWorkout() {
     setError('');
     setLoading(true);
     try {
-      await axios.post('/api/workouts', form, {
+      await API.post('/api/workouts', form, {
         headers: { Authorization: `Bearer ${auth.token}` },
       });
       navigate('/dashboard');

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import API from '../api';
 import { useAuth } from '../context/AuthContext';
 import './Dashboard.css';
 
@@ -16,8 +16,8 @@ function Dashboard() {
   const fetchData = useCallback(async () => {
     try {
       const [wRes, sRes] = await Promise.all([
-        axios.get('/api/workouts', { headers }),
-        axios.get('/api/workouts/stats', { headers }),
+        API.get('/api/workouts', { headers }),
+        API.get('/api/workouts/stats', { headers }),
       ]);
       setWorkouts(wRes.data);
       setStats(sRes.data);
@@ -32,7 +32,7 @@ function Dashboard() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/api/workouts/${id}`, { headers });
+      await API.delete(`/api/workouts/${id}`, { headers });
       setWorkouts(prev => prev.filter(w => w._id !== id));
       setStats(prev => ({
         ...prev,
