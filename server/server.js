@@ -15,12 +15,7 @@ app.use(helmet());
 
 // CORS — only allow known origins
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://fitness-tracker-virid-seven.vercel.app',
-    'https://fitness-tracker-lzn6-git-main-jaswanth-sai-s-projects.vercel.app',
-    'https://fitness-tracker-oaxn.onrender.com',
-  ],
+  origin: true,
   credentials: true,
 }));
 
